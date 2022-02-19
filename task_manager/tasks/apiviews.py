@@ -12,7 +12,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.serializers import ModelSerializer
 from rest_framework.viewsets import GenericViewSet, ModelViewSet
 
-from tasks.models import STATUS_CHOICES, Task, TaskHistory
+from task_manager.tasks.models import STATUS_CHOICES, Task, TaskHistory
 
 
 class UserSerializer(ModelSerializer):

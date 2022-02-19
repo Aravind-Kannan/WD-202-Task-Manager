@@ -11,7 +11,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from pytz import timezone
 
-from tasks.models import EmailTaskReport, Task, User
+from task_manager.tasks.models import EmailTaskReport, Task, User
 
 
 class UserForm(UserCreationForm):

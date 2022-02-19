@@ -1,15 +1,16 @@
 # Celery - Tasks
 from datetime import datetime, timedelta
 
-from celery.decorators import periodic_task
+# from celery.decorators import periodic_task
 from django.core.mail import send_mail
 from pytz import timezone
-from task_manager.celery import app
+from config.celery_app import app
 
-from tasks.models import STATUS_CHOICES, EmailTaskReport, Task, User
+from task_manager.tasks.models import STATUS_CHOICES, EmailTaskReport, Task, User
 
 
-@periodic_task(run_every=timedelta(seconds=10))
+# @periodic_task(run_every=timedelta(seconds=10))
+@app.task
 def send_email_reminder():
     print("Starting to process Emails")
     now_utc = datetime.now(timezone("UTC"))
@@ -40,3 +41,11 @@ def send_email_reminder():
         email_report.save()
         print("Email sent!")
         print(f"Completed Processing User {user.id} to user email: {user.email}")
+
+
+app.conf.beat_schedule = {
+    'send-every-10-seconds': {
+        'task': 'task_manager.tasks.tasks.send_email_reminder',
+        'schedule': 10.0
+    },
+}

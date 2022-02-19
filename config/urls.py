@@ -42,8 +42,8 @@ from django.shortcuts import redirect
 
 # * Django Rest Framework
 from rest_framework_nested import routers
-from tasks.apiviews import TaskHistoryViewSet, TaskViewSet
-from tasks.views import (
+from task_manager.tasks.apiviews import TaskHistoryViewSet, TaskViewSet
+from task_manager.tasks.views import (
     GenericAllTaskView,
     GenericCompletedTaskView,
     GenericEmailTaskReportUpdateView,
