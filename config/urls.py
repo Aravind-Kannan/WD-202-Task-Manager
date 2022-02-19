@@ -68,7 +68,7 @@ task_router = routers.NestedSimpleRouter(router, "api/v1/task", lookup="task")
 task_router.register("history", TaskHistoryViewSet)
 
 urlpatterns = [
-    path('', redirect_view),
+    path('', redirect_view, name="home"),
     # ! Admin
     path("admin/", admin.site.urls),
     # ! Task
