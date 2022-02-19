@@ -1,0 +1,40 @@
+{% extends "../base2.html" %}
+{% load myfilters %}
+
+{% block content %}
+<form class="col-start-2 my-10" action="" method="post">
+    <div class="flex justify-between">
+        <h1 class="my-5 text-4xl font-bold">Todo Manager</h1>
+        {% block alterPageButton %} {% endblock %}
+    </div>
+  <h2 class="text-2xl">{% block headerContents %} {% endblock %}</h2>
+
+  <!-- TODO: Find alternative styling -->
+
+  {% for field in form %}
+    <div class="py-3">
+      {{ field.errors }} 
+      <div class="text-xl py-2">{{ field.label_tag }} </div>
+
+      <div>{{ field|addclass:"bg-slate-100 rounded-xl w-full py-2 pl-4" }}</div> 
+      
+      <ul class="list-none pl-6 text-slate-500 text-sm">
+        {% if field.help_text %}
+          <li id="help_text">{{ field.help_text|safe }}</li>
+        {% endif %}
+      </ul>
+      
+    </div>
+  {% endfor %}
+  
+  {% csrf_token %}
+  <button class="text-white bg-red-500 hover:bg-red-600 rounded-xl w-full p-3" type="submit">{% block buttonContents %} {% endblock %}</button>
+</form>
+
+<!-- Custom styling for 'help_text' -->
+<style>
+#help_text > ul{
+  list-style-type: disc;
+}
+</style>
+{% endblock %}

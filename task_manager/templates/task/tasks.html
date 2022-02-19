@@ -1,0 +1,8 @@
+{% extends "./base_landing.html" %}
+{% load myfilters %}
+
+{% block pane %}
+  <a class="px-5 py-2 rounded-3xl hover:bg-red-200 hover:text-red-500" href="/all-tasks/">All</a>
+  <a class="px-5 py-2 rounded-3xl bg-red-200 text-red-500 hover:bg-red-400 hover:text-red-700" href="/tasks/">Pending</a>
+  <a class="px-5 py-2 rounded-3xl hover:bg-red-200 hover:text-red-500" href="/completed-tasks/">Completed</a>
+{% endblock %}

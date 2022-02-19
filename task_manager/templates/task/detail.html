@@ -1,0 +1,26 @@
+{% extends "../base2.html" %}
+{% load myfilters %}
+
+{% block content %}
+<h1 class="my-5 text-4xl font-bold">Details of a Todo</h1>
+<div class="my-2 px-3 pt-4 bg-slate-100 rounded-2xl">
+  <p class="font-bold">Title:</p> 
+  <p>{{object.title}}</p>
+
+  <p class="font-bold">Description:</p> 
+  <p>{{object.description}}</p>
+
+  <p class="font-bold">Created Date:</p> 
+  <p>{{object.created_date}}</p>
+
+  <p class="font-bold">Priority:</p> 
+  <p>{{object.priority}}</p>
+
+  <p class="font-bold">Status:</p> 
+  <p>{{object.status|title}}</p>
+
+  <div class="flex flex-row text-center">
+    <a href="/all-tasks" class="flex-grow my-5 mx-2 p-3 text-white bg-green-500 hover:bg-green-600 rounded-xl">Back</a>
+  </div>
+</div>
+{% endblock %}

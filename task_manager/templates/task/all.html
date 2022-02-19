@@ -1,0 +1,25 @@
+{% extends "./base_landing.html" %}
+{% load myfilters %}
+
+{% block pane %} 
+  <a class="px-5 py-2 rounded-3xl bg-red-200 text-red-500 hover:bg-red-400 hover:text-red-700" href="/all-tasks/">All</a>
+  <a class="px-5 py-2 rounded-3xl hover:bg-red-200 hover:text-red-500" href="/tasks/">Pending</a>
+  <a class="px-5 py-2 rounded-3xl hover:bg-red-200 hover:text-red-500" href="/completed-tasks/">Completed</a>
+{% endblock %}
+
+{% block taskCard %} 
+  {% if task.completed %}
+    <div class="line-through text-red-600">{{ task.title }}</div>
+    <!-- ? Refer Date Formatting: https://docs.djangoproject.com/en/4.0/ref/templates/builtins/#date -->
+    <div class="line-through text-sm text-red-500">{{ task.created_date|date:"D d M" }}</div>
+  {% else %}
+    <div>{{ task.title }}</div>
+    <!-- ? Refer Date Formatting: https://docs.djangoproject.com/en/4.0/ref/templates/builtins/#date -->
+    <div class="text-slate-500">{{ task.created_date|date:"D d M" }}</div>
+    <div class="flex flex-row text-sm ">
+      <p class="ml-2 px-2 rounded-xl bg-blue-300 text-blue-500">{{task.priority}}</p>
+      <p class="ml-2 px-2 rounded-xl bg-purple-300 text-sm text-purple-500">{{task.status|title}}</p>
+    </div>
+  {% endif %}
+{% endblock %}
+
